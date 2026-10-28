@@ -37,7 +37,7 @@ Design a database for patient management, appointments, medical records, and bil
 
 ---
 
-## 📝 Tasks:
+##  Tasks:
 1. Identify entities, relationships, and attributes.
 2. Draw the ER diagram using any tool (draw.io, dbdiagram.io, hand-drawn and scanned).
 3. Include:
