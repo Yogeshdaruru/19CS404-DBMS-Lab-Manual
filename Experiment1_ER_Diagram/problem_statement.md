@@ -1,143 +1,156 @@
-# ER Diagram Workshop – Submission Template
+Experiment 1: Entity-Relationship (ER) Diagram
+Name :Dharuru Yogesh
+Reg No : 212224230063
+🎯 Objective:
+To understand and apply the concepts of ER modeling by creating an ER diagram for a real-world application.
 
-## Objective
-To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
+📚 Purpose:
+The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints.
 
-## Purpose
-Gain hands-on experience in designing ER diagrams that represent database structure including entities, relationships, attributes, and constraints.
+🧪 Choose One Scenario:
+🔹 Scenario 1: University Database
+Design a database to manage students, instructors, programs, courses, and student enrollments. Include prerequisites for courses.
 
----
+User Requirements:
 
-# Scenario A: City Fitness Club Management
+Academic programs grouped under departments.
+Students have admission number, name, DOB, contact info.
+Instructors with staff number, contact info, etc.
+Courses have number, name, credits.
+Track course enrollments by students and enrollment date.
+Add support for prerequisites (some courses require others).
+🔹 Scenario 2: Hospital Database
+Design a database for patient management, appointments, medical records, and billing.
 
-**Business Context:**  
-FlexiFit Gym wants a database to manage its members, trainers, and fitness programs.
+User Requirements:
 
-**Requirements:**  
-- Members register with name, membership type, and start date.  
-- Each member can join multiple programs (Yoga, Zumba, Weight Training).  
-- Trainers assigned to programs; a program may have multiple trainers.  
-- Members may book personal training sessions with trainers.  
-- Attendance recorded for each session.  
-- Payments tracked for memberships and sessions.
+Patient details including contact and insurance.
+Doctors and their departments, contact info, specialization.
+Appointments with reason, time, patient-doctor link.
+Medical records with treatments, diagnosis, test results.
+Billing and payment details for each appointment.
+📝 Tasks:
+Identify entities, relationships, and attributes.
+Draw the ER diagram using any tool (draw.io, dbdiagram.io, hand-drawn and scanned).
+Include:
+Cardinality & participation constraints
+Prerequisites for University OR Billing for Hospital
+Explain:
+Why you chose the entities and relationships.
+How you modeled prerequisites or billing.
+ER Diagram Submission - Student Name
+Scenario Chosen:
+University / Hospital (choose one)
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+ER Diagram:
+image image
 
-### Entities and Attributes
+Entities and Attributes:
+...
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+Department - Dept id, Dept name, Head of Department
+Program - Program id, Program name
+Student - Student id, Date of birth, Email, Name, Phone number
+Course - Credits, Department, Course id, Course name, Course description
+Instructor - Name, Department, Mobile number, Office location, Email, Instructor id
+...
 
-### Relationships and Constraints
+Relationships and Constraints:
+Relationship 1: Department - Program Cardinality: 1 Department → many Programs (1:N)
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Participation:
 
-### Assumptions
-- 
-- 
-- 
+Department: Total
 
----
+Program: Total
 
-# Scenario B: City Library Event & Book Lending System
+Relationship 2: Program - Student Cardinality: 1 Program → many Students (1:N)
 
-**Business Context:**  
-The Central Library wants to manage book lending and cultural events.
+Participation:
 
-**Requirements:**  
-- Members borrow books, with loan and return dates tracked.  
-- Each book has title, author, and category.  
-- Library organizes events; members can register.  
-- Each event has one or more speakers/authors.  
-- Rooms are booked for events and study.  
-- Overdue fines apply for late returns.
+Program: Total
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+Student: Total
 
-### Entities and Attributes
+Relationship 3: Student - Course (Enrolled in) Cardinality: Many Students → Many Courses (M:N)
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+Participation:
 
-### Relationships and Constraints
+Student: Partial
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Course: Partial
 
-### Assumptions
-- 
-- 
-- 
+Relationship 4: Course - Instructor (Taught by) Cardinality: 1 Instructor → many Courses (1:N)
 
----
+Participation:
 
-# Scenario C: Restaurant Table Reservation & Ordering
+Instructor: Partial
 
-**Business Context:**  
-A popular restaurant wants to manage reservations, orders, and billing.
+Course: Partial ...
 
-**Requirements:**  
-- Customers can reserve tables or walk in.  
-- Each reservation includes date, time, and number of guests.  
-- Customers place food orders linked to reservations.  
-- Each order contains multiple dishes; dishes belong to categories (starter, main, dessert).  
-- Bills generated per reservation, including food and service charges.  
-- Waiters assigned to serve reservations.
+Extension (Prerequisite / Billing):
+-Extension (Prerequisite / Billing):
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+Prerequisite Modeling: Idea: Some courses may require students to complete other courses first.
+Modeling:
 
-### Entities and Attributes
+Add a "Prerequisite" relationship between Course and Course itself.
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+It will be a binary relationship like:
 
-### Relationships and Constraints
+One Course (prerequisite) → another Course (dependent).
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Cardinality:
 
-### Assumptions
-- 
-- 
-- 
+0 or 1 prerequisite for a course (Optional, 0:1).
 
----
+Billing Modeling: Idea: Students pay based on enrolled courses (credits or fixed fees).
+Modeling:
 
-## Instructions for Students
+Add a Billing entity.
 
-1. Complete **all three scenarios** (A, B, C).  
-2. Identify entities, relationships, and attributes for each.  
-3. Draw ER diagrams using **draw.io / diagrams.net** or hand-drawn & scanned.  
-4. Fill in all tables and assumptions for each scenario.  
-5. Export the completed Markdown (with diagrams) as **a single PDF**
+Connect Student ↔ Billing and Course ↔ Billing.
+
+Billing will store:
+
+Billing ID
+
+Amount
+
+Payment Date
+
+Payment Status
+
+Cardinality:
+
+1 Student → Many Billing Records (1:N)
+
+1 Course → Many Billing Records (1:N)
+
+Design Choices:
+Design Choices: Entities like Department, Program, Student, Course, and Instructor were chosen because they represent real-world objects we need to track separately, each with their own properties (attributes).
+
+Relationships like offers, enrolled by, enrolled in, and taught by were used to properly connect the entities:
+
+Department offers Program: Logical because programs are under departments.
+
+Program enrolled by Student: Students must belong to a program.
+
+Student enrolled in Course: Students register for multiple courses.
+
+Course taught by Instructor: Instructors are responsible for teaching courses.
+
+Assumptions:
+
+Every Program must belong to exactly one Department.
+
+A Student must be enrolled in one Program but can enroll in multiple Courses.
+
+Each Course must belong to a Department.
+
+Instructors are assigned based on department expertise but can teach multiple courses.
+
+Billing and Prerequisites (if added) are optional extensions for real-world system needs.
+
+RESULT
+Hence, the concepts of ER modeling is understood and applied by creating an ER diagram for a real-world application.
